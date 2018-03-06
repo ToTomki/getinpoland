@@ -14,7 +14,7 @@ public class User {
     @Column(columnDefinition = "INT(8) UNSIGNED", name = "id")
     @GeneratedValue
     private Long userId;
-    @Column(name="name")
+    @Column(name="username")
     private String username;
     @Column(name="password")
     private String password;

@@ -4,10 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.getinpoland.dao.UserRepository;
 import pl.getinpoland.model.user.User;
 import pl.getinpoland.model.user.UserForm;
+import pl.getinpoland.model.user.enums.UserRole;
+
+import javax.validation.Valid;
+import java.util.*;
+
+import static pl.getinpoland.model.user.enums.UserRole.CHIEF;
+import static pl.getinpoland.model.user.enums.UserRole.REDACTOR;
 
 @Controller
 @RequestMapping("/user")
@@ -24,7 +32,10 @@ public class UserController {
 
     @ResponseBody
     @PostMapping("/register")
-    public String registrationSuccess(@ModelAttribute("user") UserForm newUser){
+    public String registrationSuccess(@ModelAttribute("user") @Valid UserForm newUser, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return "user/register";
+        }
         User user = new User(newUser);
         User tempUser = userRepository.findByUsername(user.getUsername());
         if (tempUser != null) return "User name is occupied";
@@ -33,4 +44,5 @@ public class UserController {
         userRepository.save(user);
         return "Registration has been successfully processed.";
     }
+
 }

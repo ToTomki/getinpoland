@@ -13,10 +13,10 @@ public class UserForm {
     public UserForm(){};
 
     public UserForm(Builder builder) {
-        this.username = username;
-        this.userSex = userSex;
-        this.userRole = userRole;
-        this.password = password;
+        this.username = builder.username;
+        this.userSex = builder.userSex;
+        this.userRole = builder.userRole;
+        this.password = builder.password;
     }
 
     public String getUsername() {
@@ -47,8 +47,8 @@ public class UserForm {
         return password;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.password = userPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public static class Builder{

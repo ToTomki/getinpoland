@@ -24,12 +24,14 @@ public class SecureConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception{
         http
                 .authorizeRequests()
+                    .antMatchers("/", "/aboutUs", "/user/register", "/login").permitAll()
                     .antMatchers("logout").hasAnyAuthority("ADMIN", "CHIEF", "REDACTOR", "USER")
                     .antMatchers("/user/register").anonymous()
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
                     .loginPage("/login")
+                    .successForwardUrl("/loggedin")
                     .permitAll()
                 .and()
                     .logout()
