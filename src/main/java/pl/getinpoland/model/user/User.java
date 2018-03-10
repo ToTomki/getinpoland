@@ -13,7 +13,7 @@ public class User {
     @Id
     @Column(columnDefinition = "INT(8) UNSIGNED", name = "id")
     @GeneratedValue
-    private Long userId;
+    private long userId;
     @Column(name="username")
     private String username;
     @Column(name="password")
@@ -39,11 +39,11 @@ public class User {
 
     public User (){}
 
-    public Long getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 

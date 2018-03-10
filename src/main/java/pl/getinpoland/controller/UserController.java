@@ -38,7 +38,6 @@ public class UserController {
         }
 
         User tempUser = userRepository.findByUsername(newUser.getUsername());
-        System.out.println("PRINTED newUser: " + newUser.toString());
         if (tempUser != null) return "User name is occupied";
         User user = new User(newUser);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Make Your Polish Dream True - Get In Poland!</title>
+    </head>
+    <body>
+        <form action="#" th:action="@{/article/newArticle}" enctype="multipart/form-data" th:object="${article}" method="post">
+            <label><p>Link to image:</p>
+                <input type="text" th:field="*{articleImageLink}" >
+                <span th:if="${#fields.hasErrors('articleImageLink')}" th:errors="*{articleImageLink}">Something is wrong with the link</span></label>
+            <label><p>Article title:</p>
+                <input type="text" th:field="*{articleTitle}" >
+                <span th:if="${#fields.hasErrors('articleTitle')}" th:errors="*{articleTitle}">Something is wrong with the title</span></label>
+            <label><p>Article content:</p>
+                <input textarea rows="10" cols="20" th:field="*{articleContent}" >
+                <span th:if="${#fields.hasErrors('articleContent')}" th:errors="*{articleContent}">Something is wrong with the content</span></label>
+            <input type="submit" value="Add Article">
+        </form>
+    </body>
+</html>

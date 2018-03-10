@@ -4,6 +4,7 @@ import pl.getinpoland.model.user.User;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -12,7 +13,7 @@ public class Article {
     @Id
     @Column(columnDefinition = "INT(7) UNSIGNED", name = "id")
     @GeneratedValue
-    private Long articleId;
+    private long articleId;
     @Column(name = "image")
     private String articleImageLink;
     @Column(name = "title")
@@ -21,21 +22,21 @@ public class Article {
     @Column(name = "content")
     private String articleContent;
     @Column(name = "approval")
-    private Long articleApproval;
+    private long articleApproval;
     @Column(name = "date")
     private Timestamp articleDate;
     @Column(name = "author_id")
-    private Long articleAuthor;
+    private long articleAuthor;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "approvedText")
     private List<User> approvingUsers;
 
 
 
-    public Long getArticleId() {
+    public long getArticleId() {
         return articleId;
     }
 
-    public void setArticleId(Long articleId) {
+    public void setArticleId(long articleId) {
         this.articleId = articleId;
     }
 
@@ -63,11 +64,11 @@ public class Article {
         this.articleContent = articleContent;
     }
 
-    public Long getArticleApproval() {
+    public long getArticleApproval() {
         return articleApproval;
     }
 
-    public void setArticleApproval(Long articleApproval) {
+    public void setArticleApproval(long articleApproval) {
         this.articleApproval = articleApproval;
     }
 
@@ -79,13 +80,14 @@ public class Article {
         this.articleDate = articleDate;
     }
 
-    public Long getArticleAuthor() {
+    public long getArticleAuthor() {
         return articleAuthor;
     }
 
-    public void setArticleAuthor(Long articleAuthor) {
+    public void setArticleAuthor(long articleAuthor) {
         this.articleAuthor = articleAuthor;
     }
+
 
     public List<User> getApprovingUsers() {
         return approvingUsers;
@@ -95,5 +97,12 @@ public class Article {
         this.approvingUsers = approvingUsers;
     }
 
+    public Article(ArticleForm articleForm){
+        this.articleImageLink = articleForm.getArticleImageLink();
+        this.articleTitle = articleForm.getArticleTitle();
+        this.articleContent = articleForm.getArticleContent();
+        this.articleDate = Timestamp.valueOf(LocalDateTime.now());
+        this.articleApproval = 0;
+    }
 
 }
