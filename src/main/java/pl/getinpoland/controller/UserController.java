@@ -32,13 +32,15 @@ public class UserController {
 
     @ResponseBody
     @PostMapping("/register")
-    public String registrationSuccess(@ModelAttribute("user") @Valid UserForm newUser, BindingResult bindingResult){
+    public String registrationPost(@ModelAttribute("user") @Valid UserForm newUser, BindingResult bindingResult){
         if (bindingResult.hasErrors()) {
             return "user/register";
         }
-        User user = new User(newUser);
-        User tempUser = userRepository.findByUsername(user.getUsername());
+
+        User tempUser = userRepository.findByUsername(newUser.getUsername());
+        System.out.println("PRINTED newUser: " + newUser.toString());
         if (tempUser != null) return "User name is occupied";
+        User user = new User(newUser);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         user.setPassword(encoder.encode(user.getPassword()));
         userRepository.save(user);

@@ -6,17 +6,18 @@ import pl.getinpoland.model.user.enums.UserSex;
 public class UserForm {
 
     private String username;
+    private String password;
     private UserSex userSex;
     private UserRole userRole;
-    private String password;
+
 
     public UserForm(){};
 
-    public UserForm(Builder builder) {
+    private UserForm(Builder builder) {
         this.username = builder.username;
+        this.password = builder.password;
         this.userSex = builder.userSex;
         this.userRole = builder.userRole;
-        this.password = builder.password;
     }
 
     public String getUsername() {
@@ -53,17 +54,30 @@ public class UserForm {
 
     public static class Builder{
         private String username;
+        private String password;
         private UserSex userSex;
         private UserRole userRole;
-        private String password;
 
-        public Builder (String username, UserSex userSex, UserRole userRole, String password) {
+        public Builder (String username, String password, UserSex userSex, UserRole userRole) {
             this.username = username;
+            this.password = password;
             this.userSex = userSex;
             this.userRole = userRole;
-            this.password = password;
         }
 
         public UserForm build() {return new UserForm(this);}
     }
+
+
+    @Override
+    public String toString() {
+        return "UserForm{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", userSex=" + userSex +
+                ", userRole=" + userRole +
+                '}';
+    }
+
+
 }

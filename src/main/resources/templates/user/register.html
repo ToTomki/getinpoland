@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org/">
+<html lang="en" xmlns:th="http://thymeleaf.org/" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Make Your Polish Dream True - Get In Poland!</title>
 </head>
 <body>
 <p>There is possibility of setting up the user role during the registration process in web app test mode.</p>
 <form action = "#" th:action="@{/user/register}" enctype="multipart/form-data" th:object="${user}" method="post">
     <label><p>User name:</p>
-        <input type="text" th:field="*{username}">
+        <input type="text" th:field="*{username}" >
         <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Something is wrong with username</span></label>
     <label><p>Password:</p>
-        <input type="password" th:field="*{password}">
+        <input type="password" th:field="*{password}" >
         <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Something is wrong with password</span></label>
     <p>Sex:</p>
     <select th:field="*{userSex}">
