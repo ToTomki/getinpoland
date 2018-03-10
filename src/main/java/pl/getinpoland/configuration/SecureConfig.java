@@ -20,6 +20,9 @@ public class SecureConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     UserAuth userAuth;
 
+    @Autowired
+    PersonalisedAuthenticationSuccessHandler successHandler;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http
@@ -31,7 +34,8 @@ public class SecureConfig extends WebSecurityConfigurerAdapter{
                 .and()
                     .formLogin()
                     .loginPage("/login")
-                    .successForwardUrl("/loggedin")
+                    .successHandler(successHandler)
+                    //.successForwardUrl("/loggedin")
                     .permitAll()
                 .and()
                     .logout()

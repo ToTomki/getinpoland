@@ -87,13 +87,13 @@ public class Article {
         this.articleAuthor = articleAuthor;
     }
 
-//    public List<User> getApprovingUsers() {
-//        return approvingUsers;
-//    }
-//
-//    public void setApprovingUsers(List<User> approvingUsers) {
-//        this.approvingUsers = approvingUsers;
-//    }
+    public List<User> getApprovingUsers() {
+        return approvingUsers;
+    }
+
+    public void setApprovingUsers(List<User> approvingUsers) {
+        this.approvingUsers = approvingUsers;
+    }
 
 
 }

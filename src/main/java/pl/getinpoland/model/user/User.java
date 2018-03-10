@@ -87,7 +87,7 @@ public class User {
         this.userDescription = userDescription;
     }
 
-    /*public List<Article> getApprovedText() {
+    public List<Article> getApprovedText() {
         return approvedText;
     }
 
@@ -95,5 +95,5 @@ public class User {
         this.approvedText = approvedText;
     }
 
-*/
+
 }

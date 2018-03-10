@@ -25,7 +25,7 @@ public class UserForm {
     }
 
     public void setUsername(String username) {
-        this.username = this.username;
+        this.username = username;
     }
 
     public UserSex getUserSex() {
