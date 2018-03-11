@@ -15,13 +15,118 @@
 
 </head>
 <body>
-<div class="container">
 
-    <a href="/login" class="btn btn-primary"><span class="fa fa-user"></span> SignIn</a>
-    <a href="/logout" class="btn btn-danger">Logout <span class="fa fa-sign-out"></span> </a>
-    <a href="/facebook" class="btn btn-primary">Facebook <span class="fa fa-facebook"></span> </a>
-    <a href="/google" class="btn btn-danger"> Google <span class="fa fa-google-plus"></span> </a>
-    <a href="/linkedin" class="btn btn-primary">LinkedIn <span class="fa fa-linkedin"></span> </a>
+<div class="container">
+    <header class="blog-header py-3">
+        <div class="nav navbar-nav navbar-right">
+        <div class="row flex-nowrap justify-content-between align-items-center">
+                <a class="text-muted" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"></svg>
+                </a>
+                <a class="btn btn-sm btn-outline-secondary" href="/">Sign up</a>
+        </div>
+        </div>
+    </header>
+
+    <div class="nav-scroller py-1 mb-2">
+        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <nav class="nav d-flex justify-content-between">
+                <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                    <a class="p-2 text-muted" href="#">How to get here?</a>
+                </div>
+                <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                    <a class="p-2 text-muted" href="#">Work</a>
+                </div>
+                <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                    <a class="p-2 text-muted" href="#">Learn Polish!</a>
+                </div>
+                <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                    <a class="p-2 text-muted" href="#">Travel</a>
+                </div>
+                <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                <a class="p-2 text-muted" href="#">About us</a>
+                </div>
+                <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                    <a class="p-2 text-muted" href="#">Forum</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-md-6">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-primary">Article category</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="#">Article title</a>
+                    </h3>
+                    <div class="mb-1 text-muted">Article date</div>
+                    <p class="card-text mb-auto">You will find here an article content in the future.</p>
+                    <a href="#">Continue reading</a>
+                </div>
+                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Here should be loaded an image">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-success">Another category</strong>
+                    <h3 class="mb-0">
+                        <a class="text-dark" href="#">Another title</a>
+                    </h3>
+                    <div class="mb-1 text-muted">Another date</div>
+                    <p class="card-text mb-auto">You will find here another article content.</p>
+                    <a href="#">Continue reading</a>
+                </div>
+                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Here should be loaded an image">
+            </div>
+        </div>
+    </div>
 </div>
+
+<main role="main" class="container">
+    <div class="row">
+        <div class="col-md-8 blog-main">
+            <h3 class="pb-3 mb-4 font-italic border-bottom">
+                What's new
+            </h3>
+
+            <div class="blog-post">
+                <h2 class="blog-post-title">Some title</h2>
+                <p class="blog-post-meta">Some date by <a href="#">Author</a></p>
+
+                <p>Some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, </p>
+            </div><!-- /.blog-post -->
+
+
+
+            <nav class="blog-pagination">
+                <a class="btn btn-outline-primary" href="#">1</a>
+                <a class="btn btn-outline-secondary disabled" href="#">2</a>
+            </nav>
+
+        </div><!-- /.blog-main -->
+
+    </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="../../../../assets/js/vendor/popper.min.js"></script>
+<script src="../../../../dist/js/bootstrap.min.js"></script>
+<script src="../../../../assets/js/vendor/holder.min.js"></script>
+<script>
+      Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+      });
+    </script>
+</body>
 </body>
 </html>
