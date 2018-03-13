@@ -67,6 +67,11 @@ public class MainController {
     @GetMapping("/aboutUs")
     public String aboutUs(Model model){
         List<User> listOfWorkers = userRepository.findByUserRoleIn(Arrays.asList(REDACTOR, CHIEF));
+        for (int i = listOfWorkers.size(); i > 0; i--){
+            if (listOfWorkers.get(i-1).getUserDescription() == null){
+                listOfWorkers.get(i-1).setUserDescription("This person has not a description yet.");
+            }
+        }
         model.addAttribute("listOfWorkers", listOfWorkers);
         return "aboutUs";
     }

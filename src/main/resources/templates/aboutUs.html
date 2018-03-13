@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Make Your Polish Dream True - Get In Poland!</title>
+    <!-- <meta name="description" content=""/> -->
+    <meta name="viewport" content="width=device-width"/>
+    <!-- <base href="/"/> -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"/>
+
+
+</head>
+<body>
+
+<div class="container">
+    <header class="blog-header py-3">
+        <div class="nav navbar-nav navbar-right">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <a class="text-muted" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"></svg>
+                </a>
+                <a class="btn btn-sm btn-outline-secondary" href="/">Sign up</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav-scroller py-1 mb-2">
+        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <nav class="nav d-flex justify-content-between">
+                <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                    <a class="p-2 text-muted" href="#">How to get here?</a>
+                </div>
+                <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                    <a class="p-2 text-muted" href="#">Work</a>
+                </div>
+                <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                    <a class="p-2 text-muted" href="#">Learn Polish!</a>
+                </div>
+                <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                    <a class="p-2 text-muted" href="#">Travel</a>
+                </div>
+                <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                    <a class="p-2 text-muted" href="#">About us</a>
+                </div>
+                <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                    <a class="p-2 text-muted" href="#">Forum</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<main role="main" class="container">
+    <div class="row">
+        <div class="col-md-8 blog-main">
+            <h3 class="pb-3 mb-4 font-italic border-bottom">
+                About us
+            </h3>
+
+            <div th:each="person : ${listOfWorkers}" class="blog-post">
+                <div>
+                    <h2 class="blog-post-title" th:text="${person.username}"></h2>
+                    <p th:text="${person.userDescription}"></p>
+                    <hr/>
+                </div>
+
+            </div><!-- /.blog-post -->
+        </div><!-- /.blog-main -->
+
+    </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="../../../../assets/js/vendor/popper.min.js"></script>
+<script src="../../../../dist/js/bootstrap.min.js"></script>
+<script src="../../../../assets/js/vendor/holder.min.js"></script>
+<script>
+      Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+      });
+    </script>
+</body>
+</body>
+</html>
