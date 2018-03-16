@@ -11,7 +11,12 @@
     <script type="text/javascript" src="/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"/>
-
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
 
 </head>
 <body>
@@ -19,12 +24,12 @@
 <div class="container">
     <header class="blog-header py-3">
         <div class="nav navbar-nav navbar-right">
-        <div class="row flex-nowrap justify-content-between align-items-center">
+            <div class="row flex-nowrap justify-content-between align-items-center">
                 <a class="text-muted" href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-3"></svg>
                 </a>
                 <a class="btn btn-sm btn-outline-secondary" href="/">Sign up</a>
-        </div>
+            </div>
         </div>
     </header>
 
@@ -32,7 +37,7 @@
         <div class="card flex-md-row mb-4 box-shadow h-md-250">
             <nav class="nav d-flex justify-content-between">
                 <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                    <a class="p-2 text-muted" href="startPoland">How to get here?</a>
+                    <a class="p-2 text-muted" href="#">How to get here?</a>
                 </div>
                 <div class="card flex-md-row mb-4 box-shadow h-md-250">
                     <a class="p-2 text-muted" href="#">Learn Polish!</a>
@@ -41,43 +46,12 @@
                     <a class="p-2 text-muted" href="#">Travel</a>
                 </div>
                 <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                <a class="p-2 text-muted" href="/aboutUs">About us</a>
+                    <a class="p-2 text-muted" href="/aboutUs">About us</a>
                 </div>
                 <div class="card flex-md-row mb-4 box-shadow h-md-250">
                     <a class="p-2 text-muted" href="#">Forum</a>
                 </div>
             </nav>
-        </div>
-    </div>
-
-    <div class="row mb-2">
-        <div class="col-md-6">
-            <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                <div class="card-body d-flex flex-column align-items-start">
-                    <strong class="d-inline-block mb-2 text-primary">Article category</strong>
-                    <h3 class="mb-0">
-                        <a class="text-dark" href="#">Article title</a>
-                    </h3>
-                    <div class="mb-1 text-muted">Article date</div>
-                    <p class="card-text mb-auto">You will find here an article content in the future.</p>
-                    <a href="#">Continue reading</a>
-                </div>
-                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Here should be loaded an image">
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                <div class="card-body d-flex flex-column align-items-start">
-                    <strong class="d-inline-block mb-2 text-success">Another category</strong>
-                    <h3 class="mb-0">
-                        <a class="text-dark" href="#">Another title</a>
-                    </h3>
-                    <div class="mb-1 text-muted">Another date</div>
-                    <p class="card-text mb-auto">You will find here another article content.</p>
-                    <a href="#">Continue reading</a>
-                </div>
-                <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Here should be loaded an image">
-            </div>
         </div>
     </div>
 </div>
@@ -86,23 +60,27 @@
     <div class="row">
         <div class="col-md-8 blog-main">
             <h3 class="pb-3 mb-4 font-italic border-bottom">
-                What's new
+                How to get here?
             </h3>
-
-            <div class="blog-post">
-                <h2 class="blog-post-title">Some title</h2>
-                <p class="blog-post-meta">Some date by <a href="#">Author</a></p>
-
-                <p>Some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, some content, </p>
+            <div>
+                <div id="map"></div>
+                <script>
+                      function initMap() {
+                        var uluru = {lat: 51.7730971, lng: 19.4105534};
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                          zoom: 4,
+                          center: uluru
+                        });
+                        var marker = new google.maps.Marker({
+                          position: uluru,
+                          map: map
+                        });
+                      }
+                    </script>
+                <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxicEug-0L4LsMb-W3XETzXHXussNk68M&callback=initMap">
+                </script>
             </div><!-- /.blog-post -->
-
-
-
-            <nav class="blog-pagination">
-                <a class="btn btn-outline-primary" href="#">1</a>
-                <a class="btn btn-outline-secondary disabled" href="#">2</a>
-            </nav>
-
         </div><!-- /.blog-main -->
 
     </div><!-- /.row -->
