@@ -80,10 +80,10 @@ public class MainController {
     @ResponseBody
     public String accessDenied(){return "Access denied.";}
 
-    @GetMapping("/startPoland")
-    public String startPoland(){
+    @GetMapping("/aboutPoland")
+    public String aboutPoland(){
 
-        return "startPoland";
+        return "aboutPoland";
     }
 
     }
