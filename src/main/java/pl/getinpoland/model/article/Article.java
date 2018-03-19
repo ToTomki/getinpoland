@@ -25,6 +25,8 @@ public class Article {
     private long articleApproval;
     @Column(name = "date")
     private Timestamp articleDate;
+    @Column(name = "category")
+    private int articleCategory;
     @Column(name = "author_id")
     private long articleAuthor;
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "approvedText")
@@ -88,6 +90,13 @@ public class Article {
         this.articleAuthor = articleAuthor;
     }
 
+    public int getArticleCategory() {
+        return articleCategory;
+    }
+
+    public void setArticleCategory(int articleCategory) {
+        this.articleCategory = articleCategory;
+    }
 
     public List<User> getApprovingUsers() {
         return approvingUsers;
@@ -102,6 +111,7 @@ public class Article {
         this.articleTitle = articleForm.getArticleTitle();
         this.articleContent = articleForm.getArticleContent();
         this.articleDate = Timestamp.valueOf(LocalDateTime.now());
+        this.articleCategory = articleForm.getArticleCategory();
         this.articleApproval = 0;
     }
 
