@@ -33,7 +33,6 @@ public class Article {
     private List<User> approvingUsers;
 
 
-
     public long getArticleId() {
         return articleId;
     }
@@ -114,5 +113,7 @@ public class Article {
         this.articleCategory = articleForm.getArticleCategory();
         this.articleApproval = 0;
     }
+
+public Article(){}
 
 }
