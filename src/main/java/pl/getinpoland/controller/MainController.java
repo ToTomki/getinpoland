@@ -54,6 +54,10 @@ public class MainController {
 
     @GetMapping("/{mainPageArticlePage}")
     public String mainPagePaging(Model model, @PathVariable("mainPageArticlePage") int articlePage){
+        if (articlePage == 1){
+            return "forward:/";
+        }
+
         try{
         Page<Article> articles = articleRepository.findAll(new PageRequest(articlePage,5));
         model.addAttribute("articles", articles);

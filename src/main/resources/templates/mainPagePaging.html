@@ -89,12 +89,12 @@
                 What's new
             </h3>
 
-            <div class="blog-post">
-                <h2 class="blog-post-title">Some title</h2>
-                <p class="blog-post-meta">Some date by <a href="#">Author</a></p>
+            <div th:each="article : ${articles}" class="blog-post">
+                <h2 class="blog-post-title" th:text="${article.articleTitle}"></h2>
+                <p class="blog-post-meta" th:text="${article.articleDate}"> <a th:text="${article.articleAuthor}"></a></p>
 
-                <p th:each="article : ${articles}"> </p>
-            </div><!-- /.blog-post -->
+                <p th:text="${article.articleContent}"></p>
+            </div>
 
 
 
