@@ -9,10 +9,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 import pl.getinpoland.dao.ArticleRepository;
 import pl.getinpoland.dao.UserRepository;
 import pl.getinpoland.model.article.Article;
@@ -39,36 +37,26 @@ public class MainController {
 
     @GetMapping("/")
     public String mainPage(Model model){
-        try{
         List<Article> tempList = new ArrayList<>();
         tempList = articleRepository.findLast7ByOrderByArticleId();
         model.addAttribute("firstTopArticle", tempList.get(0));
         model.addAttribute("secondTopArticle", tempList.get(1));
         model.addAttribute("articles", tempList.subList(2, 7));
-        }
-        catch(NullPointerException e){ //todo It is not recommended to catch NullPointerException! It should be changed!
-            throw new NullPointerException("There is not enough articles on your site to present it correctly.");
-        }
+
         return "mainPage";
     }
 
-    @GetMapping("/{mainPageArticlePage}")
-    public String mainPagePaging(Model model, @PathVariable("mainPageArticlePage") int articlePage){
-        if (articlePage == 1){
-            return "forward:/";
-        }
 
-        try{
-        Page<Article> articles = articleRepository.findAll(new PageRequest(articlePage,5));
-        model.addAttribute("articles", articles);
-        model.addAttribute("number", articles.getNumber());
-        model.addAttribute("pages",articles.getTotalPages());
-    }
-        catch(NullPointerException e){ //todo It is not recommended to catch NullPointerException! It should be changed!
-            throw new NullPointerException("There is not enough articles on your site to present it correctly.");
-        }
-        return "mainPagePaging";
-    }
+//    @GetMapping(name="/explore")
+//    public String mainPagePaging(Model model, @RequestParam(value = "size", defaultValue = "5") int size, @RequestParam("page") int page){
+//        if (page == 1){
+//            return "forward:/";
+//        }
+//         model.addAttribute("articles", articleRepository.findAll(new PageRequest(page, size)));
+//         model.addAttribute("currentPage", page);
+//
+//        return "mainPagePaging";
+//    }
 
 
     @GetMapping("/login")
