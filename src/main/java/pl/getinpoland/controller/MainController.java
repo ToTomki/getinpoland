@@ -42,21 +42,21 @@ public class MainController {
         model.addAttribute("firstTopArticle", tempList.get(0));
         model.addAttribute("secondTopArticle", tempList.get(1));
         model.addAttribute("articles", tempList.subList(2, 7));
-
+        System.out.println(model.toString());
         return "mainPage";
     }
 
 
-//    @GetMapping(name="/explore")
-//    public String mainPagePaging(Model model, @RequestParam(value = "size", defaultValue = "5") int size, @RequestParam("page") int page){
-//        if (page == 1){
-//            return "forward:/";
-//        }
-//         model.addAttribute("articles", articleRepository.findAll(new PageRequest(page, size)));
-//         model.addAttribute("currentPage", page);
-//
-//        return "mainPagePaging";
-//    }
+    @GetMapping("/explore")
+    public String mainPagePaging(Model model, @RequestParam(value = "size", defaultValue = "5") int size, @RequestParam("page") int page){
+        if (page == 1){
+            return "forward:/";
+        }
+         model.addAttribute("paginatedArticles", articleRepository.findAll(new PageRequest(page, size)));
+         model.addAttribute("currentPage", page);
+        System.out.println(model.toString());
+        return "mainPagePaging";
+    }
 
 
     @GetMapping("/login")
