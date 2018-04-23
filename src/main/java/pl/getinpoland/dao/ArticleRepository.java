@@ -11,6 +11,6 @@ import java.util.List;
 
 
 public interface ArticleRepository extends CrudRepository<Article, Long> {
-    Page<Article> findAll(Pageable pageable);
-    List<Article> findLast7ByOrderByArticleId();
+    Page<Article> findAllByOrderByArticleDateDesc(Pageable pageable);
+    List<Article> findLast7ByOrderByArticleIdDesc();
 }

@@ -38,7 +38,7 @@ public class MainController {
     @GetMapping("/")
     public String mainPage(Model model){
         List<Article> tempList = new ArrayList<>();
-        tempList = articleRepository.findLast7ByOrderByArticleId();
+        tempList = articleRepository.findLast7ByOrderByArticleIdDesc();
         model.addAttribute("firstTopArticle", tempList.get(0));
         model.addAttribute("secondTopArticle", tempList.get(1));
         model.addAttribute("articles", tempList.subList(2, 7));
@@ -52,7 +52,7 @@ public class MainController {
         if (page == 1){
             return "forward:/";
         }
-         model.addAttribute("paginatedArticles", articleRepository.findAll(new PageRequest(page, size)));
+         model.addAttribute("paginatedArticles", articleRepository.findAllByOrderByArticleDateDesc(new PageRequest(page, size)));
          model.addAttribute("currentPage", page);
         System.out.println(model.toString());
         return "mainPagePaging";
