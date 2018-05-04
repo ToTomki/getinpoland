@@ -3,12 +3,13 @@ package pl.getinpoland.model.article;
 import pl.getinpoland.model.user.User;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-public class Article {
+public class Article implements Serializable {
 
     @Id
     @Column(columnDefinition = "INT(7) UNSIGNED", name = "id")

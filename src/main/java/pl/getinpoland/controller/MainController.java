@@ -1,6 +1,7 @@
 package pl.getinpoland.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +16,7 @@ import pl.getinpoland.dao.ArticleRepository;
 import pl.getinpoland.dao.UserRepository;
 import pl.getinpoland.model.article.Article;
 import pl.getinpoland.model.user.User;
+import pl.getinpoland.service.PaginatedResultsRetrievedEvent;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,6 +37,9 @@ public class MainController {
     @Autowired
     ArticleRepository articleRepository;
 
+    @Autowired
+    ApplicationEventPublisher eventPublisher;
+
     @GetMapping("/")
     public String mainPage(Model model){
         List<Article> tempList = new ArrayList<>();
@@ -47,17 +52,48 @@ public class MainController {
     }
 
 
-    @GetMapping("/explore")
-    public String mainPagePaging(Model model, @RequestParam(value = "size", defaultValue = "5") int size, @RequestParam("page") int page){
-        if (page == 1){
-            return "forward:/";
+//    @GetMapping("/explore")
+//    public String mainPagePaging(Model model, @RequestParam(value = "size", defaultValue = "5") int size, @RequestParam("page") int page){
+//        if (page == 1){
+//            return "forward:/";
+//        }
+//         model.addAttribute("paginatedArticles", articleRepository.findAllByOrderByArticleDateDesc(new PageRequest(page, size)));
+//         model.addAttribute("currentPage", page);
+//        System.out.println(model.toString());
+//        return "mainPagePaging";
+//    }
+
+//    @GetMapping("explore")
+//    @ResponseBody
+//    public List<Article> mainPagePaging(
+//            @RequestParam( "page" ) int page, @RequestParam( "size" ) int size,
+//            UriComponentsBuilder uriBuilder, HttpServletResponse response ) throws Exception{
+//
+//        Page<Article> resultPage = articleRepository.findAllByOrderByArticleDateDesc(new PageRequest(page, size));
+//        if( page > resultPage.getTotalPages() ) {
+//            throw new Exception("The page number from site " + " is too big.");
+//        }
+//        eventPublisher.publishEvent( new PaginatedResultsRetrievedEvent< Article >
+//                ( Article.class, uriBuilder, response, page, resultPage.getTotalPages(), size ) );
+//        return resultPage.getContent();
+//    }
+
+    @GetMapping("explore")
+//    @ResponseBody
+    public String mainPagePaging(Model model, @RequestParam( "page" ) int page, @RequestParam( "size" ) int size,
+            UriComponentsBuilder uriBuilder, HttpServletResponse response ) throws Exception{
+
+        Page<Article> resultPage = articleRepository.findAllByOrderByArticleDateDesc(new PageRequest(page, size));
+        if( page > resultPage.getTotalPages() ) {
+            throw new Exception("The page number from site " + " is too big.");
         }
-         model.addAttribute("paginatedArticles", articleRepository.findAllByOrderByArticleDateDesc(new PageRequest(page, size)));
-         model.addAttribute("currentPage", page);
-        System.out.println(model.toString());
+        eventPublisher.publishEvent( new PaginatedResultsRetrievedEvent< Article >
+                ( Article.class, uriBuilder, response, page, resultPage.getTotalPages(), size ) );
+        model.addAttribute("paginatedArticles", resultPage.getContent());
+        model.addAttribute("currentPage", page);
+        System.out.println(resultPage.getContent());
         return "mainPagePaging";
     }
-
 
     @GetMapping("/login")
     public String login(Model model){
